@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    container: ultrarangers/android-build:sdk-29
+    container: mingc/android-build-box:latest
     runs-on: ubuntu-latest
 
     steps:
@@ -20,4 +20,4 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew --debug assembleDebug
+      run: ./gradlew --info assembleDebug
