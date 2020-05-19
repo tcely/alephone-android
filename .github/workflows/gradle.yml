@@ -12,7 +12,8 @@ on:
 jobs:
   build:
 
-    runs-on: ultrarangers/android-build:sdk-29
+    container: ultrarangers/android-build:sdk-29
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
