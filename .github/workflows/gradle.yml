@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    container: mingc/android-build-box:latest
+    container: ultrarangers/android-build:sdk-29
     runs-on: ubuntu-latest
 
     steps:
