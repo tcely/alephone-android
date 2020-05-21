@@ -19,6 +19,8 @@ jobs:
     - name: SDK Manager
       run: sdkmanager --list
     - uses: actions/checkout@v2
+    - name: Update submodules recursively
+      run: git submodule update --init --recursive
     - name: Install cmake
       run: apt update && apt -y install python3-pip && pip3 install --upgrade pip setuptools wheel && pip3 install 'cmake==3.14.4'
     - name: Grant execute permission for gradlew
