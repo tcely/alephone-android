@@ -16,13 +16,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: SDK Manager
-      run: sdkmanager --list
+    - name: APT update
+      run: apt update
+    - name: Install pip3
+      run: apt -y install python3-pip
+    - name: Upgrade pip3
+      run: pip3 install --upgrade pip setuptools wheel
+    - name: Install cmake 3.14.4
+      run: pip3 install 'cmake==3.14.4'
+    - name: Install ninja
+      run: pip3 install ninja
+    - name: Configure Git for HTTPS
+      run: git config --global 'url.https://github.com/.insteadOf' 'git@github.com:'
     - uses: actions/checkout@v2
     - name: Update submodules recursively
-      run: git config --global 'url.https://github.com/.insteadOf' 'git@github.com:' ; git submodule sync --recursive && git submodule update --init --recursive --depth 1
-    - name: Install cmake
-      run: apt update && apt -y install python3-pip && pip3 install --upgrade pip setuptools wheel && pip3 install 'cmake==3.14.4'
+      run: git submodule sync --recursive && git submodule update --init --recursive --depth 1
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
