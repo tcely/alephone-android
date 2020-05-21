@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: SDK Manager
+      run: sdkmanager --list
     - uses: actions/checkout@v2
     - name: Install cmake
       run: apt update && apt -y install python3-pip && pip3 install --upgrade pip setuptools wheel && pip3 install 'cmake==3.14.4'
